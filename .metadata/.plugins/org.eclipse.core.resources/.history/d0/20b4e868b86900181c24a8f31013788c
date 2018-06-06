@@ -2,7 +2,7 @@ package teste1;
 
 public class StandupFight {
 	
-	public static void KickboxingMatch(Fighter fighterA, Fighter fighterB){
+	public static void FullContactMatch(Fighter fighterA, Fighter fighterB){
 		
 		int fighterAHealth = 12;
 		int fighterBHealth = 12;
@@ -23,13 +23,13 @@ public class StandupFight {
 					fighterBHealth = 0;
 					
 				} else if (roundresult > 1) {
-					fighterBHealth = fighterBHealth - 4;
+					fighterBHealth = fighterBHealth - 3;
 					fighterAHealth = fighterAHealth - 1;
 				} else if (roundresult > -2 ){
 					fighterBHealth = fighterBHealth - 2;
 					fighterAHealth = fighterAHealth - 2;
 				} else if (roundresult > -5){
-					fighterBHealth = fighterAHealth - 4;
+					fighterBHealth = fighterAHealth - 3;
 					fighterAHealth = fighterBHealth - 1;
 				} else {
 					knockout = 2;
@@ -37,7 +37,6 @@ public class StandupFight {
 	
 				}
 			}
-			int lastround = round;
 
 		}
 	}

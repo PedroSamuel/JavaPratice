@@ -2,7 +2,7 @@ package teste1;
 
 public class StandupFight {
 	
-	public static void KickboxingMatch(Fighter fighterA, Fighter fighterB){
+	public static void FullContactMatch(Fighter fighterA, Fighter fighterB){
 		
 		int fighterAHealth = 12;
 		int fighterBHealth = 12;
