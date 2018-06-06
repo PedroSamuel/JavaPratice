@@ -2,7 +2,7 @@ package teste1;
 
 public class Gymn {
 	
-	public static void trainBoxing(Fighter fighter, int points){
+	public static void trainKickboxing(Fighter fighter, int points){
 		fighter.strikingLv = fighter.strikingLv + points;
 		fighter.fitness = fighter.fitness + 1;
         System.out.println(fighter.name + "'striking Lv is now " + fighter.strikingLv);

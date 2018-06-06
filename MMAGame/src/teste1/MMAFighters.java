@@ -1,6 +1,6 @@
 package teste1;
 //import java.util.concurrent.ThreadLocalRandom;
-import java.util.Random;
+
 
 public class MMAFighters {
 	
@@ -14,7 +14,7 @@ public class MMAFighters {
 		Fighter Fighter1 = new Fighter();
 		Fighter1.setName("Jason");
 		Fighter1.setStats(8, 4, 3, 5);
-		Gymn.trainBoxing(Fighter1, 3);
+		Gymn.trainKickboxing(Fighter1, 3);
 		//Fighter1.trainHITT(2);
 		//Fighter1.checkStats();
 		
