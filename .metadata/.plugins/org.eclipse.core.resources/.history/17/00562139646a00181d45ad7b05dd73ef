@@ -1,0 +1,32 @@
+package io.altar.jseproject.textinterface;
+
+import java.util.Scanner;
+
+public class TextInterface {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		TextInterface t = new TextInterface();
+		t.firstPage();
+	 
+	
+	}
+	
+	public void firstPage(){
+		
+		System.out.println("Por favor selecione uma das seguintes opções:");
+		System.out.println("1)	Listar produtos");
+		System.out.println("2)	Listar prateleiras");
+		System.out.println("3)	Sair");
+	     Scanner sc = new Scanner(System.in);
+	     int i = sc.nextInt();
+	     sc.close();
+
+
+
+		
+		
+		
+	}
+
+}

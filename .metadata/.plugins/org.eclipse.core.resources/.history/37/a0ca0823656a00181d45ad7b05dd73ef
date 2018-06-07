@@ -1,0 +1,34 @@
+package io.altar.jseproject.textinterface;
+
+import java.util.Scanner; //https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html
+
+
+public class TextInterface {
+
+	public static void main(String[] args) {
+		firstPage();
+	 
+	
+	}
+	
+	public static void firstPage(){
+		
+		System.out.println("Por favor selecione uma das seguintes opções:");
+		System.out.println("1)	Listar produtos");
+		System.out.println("2)	Listar prateleiras");
+		System.out.println("3)	Sair");
+	     Scanner sc = new Scanner(System.in);
+	     String i = sc.nextln();
+	     sc.close();
+	     System.out.println("Premiu " + i);
+	    
+
+
+
+
+		
+		
+		
+	}
+
+}
