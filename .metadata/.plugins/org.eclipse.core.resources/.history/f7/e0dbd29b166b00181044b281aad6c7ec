@@ -1,0 +1,63 @@
+package io.altar.jseproject.textinterface;
+
+import java.util.Scanner; //https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html
+
+
+public class TextInterface {
+		static Scanner scanner = new Scanner(System.in);
+		
+		
+		////    main        //////
+	public static void main(String[] args) {
+		firstMenu();
+	 
+	
+	}
+	
+	//////    first menu    /////////
+	public static void firstMenu(){
+		
+		boolean valid = false;
+		while (!valid){
+		
+		System.out.println("Por favor selecione uma das seguintes opções:");
+		System.out.println("1)	Listar produtos");
+		System.out.println("2)	Listar prateleiras");
+		System.out.println("3)	Sair");
+		
+				int choice1 = scanner.nextInt();
+				System.out.println("Press Enter to Continue");
+				scanner.nextLine();
+		}	     
+	}
+		
+//////  second menu    /////////
+	public static void secondMenu(){
+		
+		boolean valid = false;
+		while (!valid){
+		
+		System.out.println("Por favor selecione uma das seguintes opções:");
+		System.out.println("1)	Criar novo produto");
+		System.out.println("2)	Editar um produto existente");
+		System.out.println("3)	Consultar os detalhes de um produto");
+		System.out.println("4)	Remover um produto");
+		System.out.println("5)	Voltar ao menu anterior");
+
+		
+				int choice2 = scanner.nextInt();
+				System.out.println("Press Enter to Continue");
+				scanner.nextLine();
+		
+
+		}	     
+	}
+		
+
+
+		
+		
+		 
+		scanner.close();
+}
+}
