@@ -5,7 +5,6 @@ INDEX VERSION 1.130+/Users/alunotarde/Desktop/Pedro Silva/JavaExercises/JavaPrat
 4166604845.index
 609331307.index
 3969190818.index
-2372460686.index
 357478278.index
 518397319.index
 4018134042.index
