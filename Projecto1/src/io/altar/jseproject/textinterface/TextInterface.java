@@ -2,6 +2,8 @@ package io.altar.jseproject.textinterface;
 
 import java.util.Scanner; //https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html
 
+import io.altar.jseproject.model.Product;
+
 
 public class TextInterface {
 		static Scanner scanner = new Scanner(System.in);
@@ -10,8 +12,6 @@ public class TextInterface {
 		////    main        //////
 	public static void main(String[] args) {
 		firstMenu();
-	 
-	
 	}
 	
 	/////////////////////////////////////    first menu    //////////////////////////////
@@ -25,32 +25,35 @@ public class TextInterface {
 			System.out.println("2)	Listar prateleiras");
 			System.out.println("3)	Sair");
 			
-			int choice = scanner.nextInt();
+			String choice = scanner.nextLine();
+			int op = Utilities.toInt(choice, 6);
+			
 			
 			//voltar a experimentar com switch.
 			
-			//switch(choice)
-			
-			
-			
-			if (choice == 1){
-				listProducts();
-				valid = true;
-			} else if (choice == 2){
-				listShelfs();
-			} else if (choice == 3);
-				System.out.println("Obrigado pela visita.");
-				System.out.println("#####################");
-				valid = true;
-				
-
-				
-		}	     
-
-
-
+			switch(op){
+				case 1: 
+					listProducts();
+					valid = true;
+					break;
+				case 2:
+					listShelfs();
+					valid = true;
+					break;
+				case 3:
+					System.out.println("Obrigado pela visita.");
+					System.out.println("#####################");
+					valid = true;
+					break;
+				default:
+					System.out.println("Por favor introduza uma opçåo valida.");
+					break;
+			}
+		}
 	}
-		//tentar voltar 
+		
+			
+
 	/////////////////////////////////////  Listar Produtos    ////////////////////////////
 	public static void listProducts(){
 		
@@ -63,17 +66,52 @@ public class TextInterface {
 			System.out.println("3)	Consultar os detalhes de um produto");
 			System.out.println("4)	Remover um produto");
 			System.out.println("5)	Voltar ao menu anterior");
-			int choice = scanner.nextInt();
-			if (choice == 1){
-				listProducts();
-				valid = true;
-			} else if (choice == 2){
-				listShelfs();
-			} else if (choice == 3);
-				firstMenu();
-				valid = true;
-		}	
-		     
+			String choice = scanner.nextLine();
+			int op = Utilities.toInt(choice, 6);
+			
+			switch(op){
+				case 1: 
+					System.out.println("Novo Produto:");
+					System.out.println("Introduza o nome do produto a criar.");
+					String name = scanner.nextLine();
+					System.out.println("Introduza o preço do produto a criar.");
+					String sPrice = scanner.nextLine();
+					double price = 0.0;
+					do { 
+						price = Utilities.toDouble(sPrice, 0.0);
+						if (price == 0.0){
+							System.out.println("Introduza um valor valido para o preço do produto.");
+						}
+					}while (price == 0.0);
+					System.out.println("Introduza o valor do IVA aplicado no preço do produto.");
+					String sIva = scanner.nextLine();
+					double iva = 0.0;
+					do {
+						iva = Utilities.toDouble(sIva, 0.0);
+						if ((price == 0.0) || (!Product.validIva.contains(iva))){
+							System.out.println("Introduza um valor valido de Iva para o produto.");
+						} else if (iva > 1.0){
+							iva = iva / 100;}
+							
+						}
+					} while (iva == 0.0);
+
+					
+					
+					break;
+				case 2: 
+					System.out.println("Editar Produto:");
+				case 3:
+					System.out.println("Consultar Produto:");
+				case 4:
+					System.out.println("Remover Produto:");
+				case 5:
+					firstMenu();
+					valid = true;
+				default:
+					System.out.println("Por favor introduza uma opçåo valida.");
+			}
+		}
 	}
 	
 	/////////////////////////////////////  Listar Prateleiras    ////////////////////////////
@@ -88,23 +126,31 @@ public class TextInterface {
 			System.out.println("3)	Consultar os detalhes de uma prateleira");
 			System.out.println("4)	Remover uma prateleira");
 			System.out.println("5)	Voltar ao menu anterior");
-			int choice = scanner.nextInt();
-			
-			if (choice == 1){
-				listProducts();
-				valid = true;
-			} else if (choice == 2){
-				listShelfs();
-			} else if (choice == 3);
-				firstMenu();
-				valid = true;
-		}	
+			String choice = scanner.nextLine();
+			int op = Utilities.toInt(choice, 6);
+		
+			switch(op){
+				case 1:
+					System.out.println("Nova Prateleira:");
+					break;
+				case 2:
+					System.out.println("Editar Prateleira:");
+					break;
+				case 3: 
+					System.out.println("Consultar Prateleira:");
+					break;
+				case 4:
+					System.out.println("Remover Prateleira:");
+					break;
+				case 5:
+					firstMenu();
+					valid = true;
+					break;
+				default:
+					System.out.println("Por favor introduza uma opçåo valida.");
+					break;
+			}
+		}
 
 	}
-	
-	
-	
-	
-	
-		//scanner.close(); 
 }

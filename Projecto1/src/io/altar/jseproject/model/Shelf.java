@@ -1,17 +1,29 @@
 package io.altar.jseproject.model;
 
-public class Shelf {
-	public int shelfId;
+import io.altar.jseproject.textinterface.Entity;
+
+public class Shelf extends Entity{
+	public long ID;
 	public int capability; // perceber qual e o objectivo deste atributo para pereber a classe correcta.
 	public Product productOnShelf;
-	public double price;
+	public double rentPrice;
+	
+	
 
 	
-		//setters
-	public void setShelfId(int shelfId){
-		this.shelfId = shelfId;
+		public Shelf(int capability, Product productOnShelf, double price) {
+		super();
+		this.ID = ID++;
+		this.capability = capability;
+		this.productOnShelf = productOnShelf;
+		this.rentPrice = price;
 	}
-	
+
+	//setters
+//	public void setShelfId(int shelfId){
+//		this.shelfId = shelfId;
+//	}
+//	
 	public void setCapability(int capability) {
 		this.capability = capability;
 	}			
@@ -21,14 +33,14 @@ public class Shelf {
 	}
 	
 	public void setPrice(double price) {
-			this.price = price;
+			this.rentPrice = price;
 	}
 	
 	//getters
 		
-	public int getShelfId(){
-		return this.shelfId;
-		}
+//	public int getShelfId(){
+//		return this.shelfId;
+//		}
 
 	public int getCapability() {
 		return this.capability;
@@ -41,7 +53,7 @@ public class Shelf {
 	}
 
 	public double getPrice() {
-		return this.price;
+		return this.rentPrice;
 	}
 
 
