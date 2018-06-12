@@ -7,32 +7,31 @@ import io.altar.jseproject.textinterface.Entity;
 
 public class Product extends Entity{
 		private String name;
-		private long ID;
+		private long ID = 0;
 		private ArrayList<Shelf> onShelfs; //???????
 		private double iva;
 		private double pvp;
 		public static final List<Double> validIva = new ArrayList<>();
 		
+	
 		static {
 			validIva.add(0.06);
 			validIva.add(0.13);
 			validIva.add(0.23);
 		}
 		
-		public Product(String name, double iva, double pvp) {
+		public Product(String name, double pvp, double iva) {
 		super();
 		this.ID = ID++; 
-		this.iva = iva;
-		this.pvp = pvp;
+		this.setName(name);
+		this.setIva(iva);
+		this.setPvp(pvp);
 	}
-//		public long getProductId() {
-//			return ID;
-//		}
-//		
-//		public void setProductId(long productId) {
-//			this.productId = productId;
-//		}
-		
+
+		public long getID() {
+			return ID;
+		}
+
 		
 		public ArrayList<Shelf> getOnShelfs() {
 			return onShelfs;
@@ -57,6 +56,16 @@ public class Product extends Entity{
 		}
 		public void setPvp(double pvp) {
 			this.pvp = pvp;
+		}
+
+
+		public String getName() {
+			return name;
+		}
+
+
+		public void setName(String name) {
+			this.name = name;
 		}
 		
 		

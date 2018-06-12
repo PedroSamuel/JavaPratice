@@ -3,10 +3,10 @@ package io.altar.jseproject.model;
 import io.altar.jseproject.textinterface.Entity;
 
 public class Shelf extends Entity{
-	public long ID;
-	public int capability; // perceber qual e o objectivo deste atributo para pereber a classe correcta.
-	public Product productOnShelf;
-	public double rentPrice;
+	private long ID;
+	private int capability; // perceber qual e o objectivo deste atributo para pereber a classe correcta.
+	private Product productOnShelf;
+	private double rentPrice;
 	
 	
 

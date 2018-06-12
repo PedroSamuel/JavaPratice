@@ -2,7 +2,7 @@ package io.altar.jseproject.textinterface;
 
 import java.util.Scanner; //https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html
 
-import io.altar.jseproject.model.Product;
+//import io.altar.jseproject.model.Product; //?
 
 
 public class TextInterface {
