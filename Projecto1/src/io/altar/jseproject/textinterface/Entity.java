@@ -3,22 +3,18 @@ package io.altar.jseproject.textinterface;
 public abstract class Entity {
 	private Long ID;
 
-	public Entity() {
+	public Entity(){
+		this.ID = ID++;
 	}
 	
-	public void createNew(){
-	}
-	
-	public void edit(){
+	public abstract void createNew();
 		
-	}
+	public abstract void edit();
 	
-	public void delete(){
-		
-	}
+	public abstract void delete();
 	
-	public void list(){
-		
-	}
+	public abstract void list();
+	
+	public abstract long getID();
 	
 }

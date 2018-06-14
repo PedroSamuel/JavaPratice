@@ -56,6 +56,36 @@ public class Shelf extends Entity{
 		return this.rentPrice;
 	}
 
+	@Override
+	public void createNew() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void edit() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void list() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public long getID() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 }
 

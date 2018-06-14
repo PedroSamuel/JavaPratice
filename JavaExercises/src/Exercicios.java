@@ -9,10 +9,16 @@ public class Exercicios {
 	
 	public static void main(String[] args) {
 		
-		createHumans();
-		createDogs();
+		//createHumans();
+		
+		Human eva = new Human(1,"Eva",37,'f');
+		humanList.add(eva);
+		Human pedro = new Human(2,"Pedro", 29,'m');
+		humanList.add(pedro);
 		showHumans();
+		createDogs();
 		showDogs();
+		showHumans();
 		}
 
 	
@@ -68,13 +74,16 @@ public class Exercicios {
 		System.out.println("************************");
 	}
 	
+	
+	
 	private static void 	createDog(){
 		
 		String nome;
 		int idade;
 		char sexo;
 		String raça;
-		String dono;
+		//String dono;
+		//boolean validDono = false;
 		
 
 		System.out.println("Introduza o nome do novo Cåo.");
@@ -86,16 +95,45 @@ public class Exercicios {
 		sc.nextLine();
 		System.out.printf("Introduza a raça de %s.\n", nome);
 		raça = sc.nextLine();
-		System.out.printf("%s tem dono? (s/n) \n", nome);
-		if (sc.nextLine().equals("s")){
-			System.out.printf("Quem e o dono de %s? \n", nome);
-			
-		}
 		
 		System.out.println("");
+		Dog newDog = new Dog((dogList.size() + 1), nome, idade, sexo, raça);	
+
+		System.out.printf("%s tem dono? (s/n) \n", nome);
+		if (sc.nextLine().equals("s")){
+			attributeOwner(newDog);
+			dogList.add(newDog);
+		}
 		
-		Dog newDog = new Dog((dogList.size() + 1), nome, idade, sexo, raça);
-		dogList.add(newDog);
+	}
+	
+	private static Dog attributeOwner(Dog dog){
+		boolean validDono = false;
+		
+		
+		while (validDono == false){
+				String dono;
+				System.out.printf("Quem e o dono de %s? \n", dog.getNome());
+				dono = sc.nextLine();
+				for (int i= 0; i < humanList.size(); i++){
+					if (humanList.get(i).getNome().equals(dono)){
+						dog.setOwner(humanList.get(i));
+						humanList.get(i).setPet(dog);
+						validDono = true;
+					}
+				}
+					
+				if (validDono == false){
+					System.out.println( " Introduza um nome valido para o dono.");
+					System.out.println("Nomes validos: ");
+					for (Human human: humanList){
+						System.out.print(human.getNome() + ", ");	
+					}
+						System.out.println("");
+				}
+					
+			}
+		return dog;
 	}
 	
 	public static void createDogs(){
@@ -122,16 +160,16 @@ public class Exercicios {
 //			System.out.println("Qual e o nome do Dono?");
 //			nomeDono = sc.nextLine();
 //	
-////			for (Human human : humanList){
-////				
-////				if (human.getNome().equals(nomeDono)){
-////					validDono = true;
-////					indexDono = x;}
-////				x++;
-////				}
-////			if (validDono == false){
-////				System.out.println("Introduza um nome de dono valido.");
-////			}
+//			for (Human human : humanList){
+//				
+//				if (human.getNome().equals(nomeDono)){
+//					validDono = true;
+//					indexDono = x;}
+//				x++;
+//				}
+//			if (validDono == false){
+//				System.out.println("Introduza um nome de dono valido.");
+//			}
 //			
 //		}
 //		

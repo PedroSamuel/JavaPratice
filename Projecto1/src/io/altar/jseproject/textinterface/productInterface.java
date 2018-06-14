@@ -5,7 +5,7 @@ import io.altar.jseproject.model.Product;
 
 public abstract class productInterface extends TextInterface{
 	
-	
+	//############################ CRIAR PRODUTO #########################
 	public static void newProduct(){
 		System.out.println("Novo Produto:");
 		
@@ -46,5 +46,7 @@ public abstract class productInterface extends TextInterface{
 		scanner.nextLine();
 	
 	}
+	
+	
 	
 }

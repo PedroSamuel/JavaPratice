@@ -9,12 +9,12 @@ public class TextInterface {
 		static Scanner scanner = new Scanner(System.in);
 		
 		
-		////    main        //////
+	//******************************************
 	public static void main(String[] args) {
 		firstMenu();
 	}
 	
-	/////////////////////////////////////    first menu    //////////////////////////////
+	//**************************    first menu  ****************************
 	public static void firstMenu(){
 		
 		boolean valid = false;
@@ -28,8 +28,6 @@ public class TextInterface {
 			String choice = scanner.nextLine();
 			int op = Utilities.toInt(choice, 6);
 			
-			
-			//voltar a experimentar com switch.
 			
 			switch(op){
 				case 1: 
@@ -54,7 +52,7 @@ public class TextInterface {
 		
 			
 
-	/////////////////////////////////////  Listar Produtos    ////////////////////////////
+	//**********************************  LISTAR PRODUTOS **************************
 	public static void listProducts(){
 		
 		boolean valid = false;
@@ -89,7 +87,7 @@ public class TextInterface {
 		}
 	}
 	
-	/////////////////////////////////////  Listar Prateleiras    ////////////////////////////
+	//**************************  LISTAR PRATELEIRAS    *********************************
 	public static void listShelfs(){
 
 		boolean valid = false;
