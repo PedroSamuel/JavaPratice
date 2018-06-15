@@ -1,18 +1,17 @@
 package io.altar.jseproject.textinterface;
-
 import java.util.Scanner; //https://docs.oracle.com/javase/8/docs/api/java/util/Scanner.html
 
-//import io.altar.jseproject.model.Product; //?
 
 
 public class TextInterface {
 		static Scanner scanner = new Scanner(System.in);
 		
 		
-	//******************************************
+	//******************* MAIN ***********************
 	public static void main(String[] args) {
 		firstMenu();
 	}
+	
 	
 	//**************************    first menu  ****************************
 	public static void firstMenu(){
