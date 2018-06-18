@@ -3,7 +3,7 @@ package teste1;
 public class Gymn {
 	
 	public static void trainKickboxing(Fighter fighter, int points){
-		fighter.strikingLv = fighter.strikingLv + points;
+		fighter.setStrikingLv (fighter.getStrikingLv() + points);
 		fighter.fitness = fighter.fitness + 1;
         System.out.println(fighter.name + "'striking Lv is now " + fighter.strikingLv);
         System.out.println(fighter.name + "'s fitness Lv is now " + fighter.fitness);
@@ -11,9 +11,9 @@ public class Gymn {
 	}
 	
 	public static void trainWrestling(Fighter fighter,int points){
-		fighter.clinchLv = fighter.clinchLv + points;
+		fighter.wrestlingLv = fighter.wrestlingLv + points;
 		fighter.fitness = fighter.fitness + 1;
-        System.out.println(fighter.name + "'s clinchwork Lv is now " + fighter.clinchLv);
+        System.out.println(fighter.name + "'s clinchwork Lv is now " + fighter.wrestlingLv);
         System.out.println(fighter.name + "'s fitness Lv is now " + fighter.fitness);
 		
 	}

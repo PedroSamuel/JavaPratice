@@ -1,26 +1,28 @@
 package io.altar.jseproject.textinterface;
 
 import io.altar.jseproject.model.Product;
+import io.altar.jseproject.repositories.ProductRepository;
+
+//import io.altar.jseproject.model.Product;
 
 
-public abstract class productInterface extends TextInterface{
-	
-	//############################ CRIAR PRODUTO #########################
-	public static void newProduct(){
+public class CreateProductState implements State{
+		
+	@Override
+	public boolean runState() {	
+		
 		System.out.println("Novo Produto:");
 		
-		
 		System.out.println("Introduza o nome do produto a criar.");
-		String name = scanner.nextLine();
-		
+		String name = Reader.read();
+	
 		
 		double price = 0.0;
 		do {
 		System.out.println("Introduza o preço do produto a criar.");
-	    String sPrice = scanner.nextLine();
+	    String sPrice = Reader.read();
 		
-		
-			price = Utilities.toDouble(sPrice, 0.0);
+			price = Reader.toDouble(sPrice, 0.0);
 			if (price == 0.0){
 				System.out.println(sPrice + " - nao e um valor de preço valido.");
 			}
@@ -29,10 +31,8 @@ public abstract class productInterface extends TextInterface{
 		double iva = 0.0;
 		do {
 		System.out.println("Introduza o valor do IVA aplicado no preço do produto.");
-		String sIva = scanner.nextLine();
-		
-		
-			iva = Utilities.toDouble(sIva, 0.0);
+		String sIva = Reader.read();
+			iva = Reader.toDouble(sIva, 0.0);
 			if (iva > 1.0){
 				iva = (iva / 100);}
 			if ((price == 0.0) || (!Product.validIva.contains(iva))){
@@ -40,13 +40,15 @@ public abstract class productInterface extends TextInterface{
 				System.out.println("Apenas valores de 6%, 13% ou 23% sao validos.");}
 		} while (iva == 0.0);
 		Product product1 = new Product(name, price, iva);
+		
 		System.out.println("Produto Criado!");
-		System.out.println("ID: " + (product1.getID()+1) + "\nnome: " +  product1.getName() + "\npreço: " + product1.getPvp() + "euros \nIVA: " + (int)(product1.getIva()*100) + "% ");
+		ProductRepository.getInstance().createEntity(product1);
+		System.out.printf("ID: %d \nnome: %s \npreço: %.2f euros \nIVA: %d", product1.getID() , product1.getName(),(float)product1.getPvp(),(int)(product1.getIva()*100));
+		System.out.println("%");
 		System.out.println("Prima enter para continuar.");
-		scanner.nextLine();
+	Reader.read();
 	
+		return false;
 	}
-	
-	
-	
+
 }

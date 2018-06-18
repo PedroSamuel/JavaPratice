@@ -1,32 +1,16 @@
 package io.altar.jseproject.model;
 
 public abstract class Entity {
+	private long ID;
 	
-	
-
-
-	private Long ID;
-
-	
-	public void createNew(){
-		
-	}
-		
-	public void edit(){
-	
-	}
-	
-	public void delete(){
-		
+	public Entity() {
 	}
 
-	
-	public void list(){
-		
-	}
-	
-	public Long getID(){
+	public long getID(){
 		return this.ID;
 	}
 	
+	public void setID(long ID) {
+		this.ID = ID;
+	}
 }

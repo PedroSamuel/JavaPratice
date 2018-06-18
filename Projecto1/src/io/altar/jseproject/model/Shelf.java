@@ -5,7 +5,7 @@ package io.altar.jseproject.model;
 
 
 public class Shelf extends Entity{
-	private int capability; // perceber qual e o objectivo deste atributo para pereber a classe correcta.
+	private int capability; // perceber qual e o objectivo deste atributo para perceber a classe correcta.
 	private Product productOnShelf;
 	private double rentPrice;
 	

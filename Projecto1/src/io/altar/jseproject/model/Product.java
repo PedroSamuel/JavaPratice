@@ -65,7 +65,10 @@ public class Product extends Entity{
 
 	@Override
 	public String toString() {
-		return "Product [name=" + name + ", onShelfs=" + onShelfs + ", iva=" + iva + ", pvp=" + pvp + "]";
+		45555555555555555555555555555555555555555555555555555print =
+		return ("ID: %d \nnome: %s \npreço: %.2f euros \nIVA: %d", this.getID() , this.getName(),(float)this.getPvp(),(int)(this.getIva()*100));
+
+				//getID() + " [Nome: " + getName() + ", pvp: " + pvp + "€, iva: " + (iva*100) + "% ]";
 	}
 
 	
