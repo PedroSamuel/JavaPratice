@@ -4,7 +4,7 @@ public class ErrorState implements State{
 
 	@Override
 	public boolean runState() {
-		System.out.println("§§ Opção não válida. §§");
+		System.out.println("XX Opção não válida. XX");
 		return false;
 
 	}

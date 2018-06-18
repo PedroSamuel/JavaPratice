@@ -1,5 +1,6 @@
 package io.altar.jseproject.textinterface;
 import java.util.Scanner;
+import java.util.Set;
 public interface Reader {
 		Scanner scan = new Scanner(System.in);
 		
@@ -45,7 +46,17 @@ public interface Reader {
 		}
 		return defaultVal;
 	}
-	
+
+
+	public static long readfromChoices(Set<Long> set, long defaultVal) {
+		long input = readInt();
+		for (long element : set) {
+			if (element == input) {
+				return element;
+			}
+		}
+		return 0;
+	}
 }
 
 	

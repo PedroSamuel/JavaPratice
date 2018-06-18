@@ -69,8 +69,12 @@ public class Engine {
 		
 		int transition = 0;
 		while (true) {
+			System.out.println("");
+			System.out.println("**************************");
+			System.out.println("");
 				
 				if (this.nextStep(transition)) {
+					System.out.println(">>>");
 			transition = Reader.readfromChoices(checkOptions(), 0);
 			System.out.println("");
 			} else {

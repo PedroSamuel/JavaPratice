@@ -14,8 +14,10 @@ public class ListItemState implements State{
 	@Override
 	public boolean runState() {
 	
-			if (this.item.equals("Produto")) {
+			if ((this.item.equals("Produto"))&& (ProductRepository.getInstance().getLargestID() > 0)){
+				System.out.println("    Produtos Registados:");
 				ProductRepository.getInstance().getEntity();
+				System.out.println("");
 				
 		} else {
 			// listar prateleiras
