@@ -35,21 +35,16 @@ public class CreateShelfState implements State{
 		String answer = Reader.read().toUpperCase();
 		if (answer.equals("S")) {
 			long idProduto = 0;
-			while (idProduto == 0)
+			while (idProduto == 0) {
 				ProductRepository.getInstance().getEntity();
 				System.out.println("Introduza o ID do Produto:");
 				idProduto = Seeker.SeekProductID(); 
 			}
-		
-			// Set Product to Shelf
-			
-			
-			
-			
-			
-			
+			// INTRODUZIR QUANTIDADE 
+			DFSDFSDFSDFSDFF
 		} else {
 			System.out.println("Prateleira vazia.");
+			
 		}
 		
 		System.out.println("");
