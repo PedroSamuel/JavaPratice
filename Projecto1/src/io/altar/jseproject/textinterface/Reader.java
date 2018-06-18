@@ -11,7 +11,7 @@ public interface Reader {
 	}
 	
 	public static int readInt(){
-	return toInt(read(), 6);
+	return toInt(read(), 0);
 	}
 	
 	public static double readDouble(){

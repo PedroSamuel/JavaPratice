@@ -13,12 +13,12 @@ public class Engine {
 		new ListItemState("Prateleira"),		//4
 		new CreateProductState(),				//5
 		new EditProductState(),					//6
-		new ConsultProductState(),				//7
-		new DeleteProductState(),				//8
+		new ConsultEntityState("Produto"),				//7
+		new DeleteEntityState("Produto"),				//8
 		new CreateShelfState(),					//9
 		new EditShelfState(),					//10	
-		new ConsultShelfState(),				//11
-		new DeleteShelfState()					//12
+		new ConsultEntityState("Prateleira"),				//11
+		new DeleteEntityState("Prateleira")					//12
 		
 		};
 	

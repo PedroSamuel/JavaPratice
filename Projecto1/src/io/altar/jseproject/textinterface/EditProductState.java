@@ -28,9 +28,10 @@ public class EditProductState implements State {
 	private void editProduct(long id) {
 		Product product = ProductRepository.getInstance().getEntity(id);
 		System.out.println("*******************************");
-		System.out.println("Editar (prima enter para manter)");
+
 		System.out.println("");
 		System.out.println("Nome do produto: " + product.getName());
+		System.out.println("Introduza o novo nome do produto (prima ENTER para manter)");
 		String name = Reader.read();
 		if (!name.equals("")) {
 			product.setName(name);
@@ -39,15 +40,16 @@ public class EditProductState implements State {
 			System.out.println("Nome Mantido!");
 		}
 		System.out.println("");
-		System.out.println("Preço do produto: " + product.getPvp() + "€");
+		System.out.println("Preço do produto: " + product.getPvp() + "€.");
 		
 		double price = 0.0;
 		do {
+			System.out.println("Introduza o novo valor do preço do produto. (prima ENTER para manter)");
 			String sPrice = Reader.read();
 			if (!sPrice.equals("")) {
 				price = Reader.toDouble(sPrice, 0.0);
 				if (price == 0.0){
-					System.out.println(sPrice + " - nao e um valor de preço valido.");
+					System.out.println(sPrice + " - nao e um valor de preço valido. ");
 				} else {
 					System.out.println("Valor Alterado!");
 					product.setPvp(price);
@@ -59,11 +61,11 @@ public class EditProductState implements State {
 			}
 		} while (price == 0.0);
 		
-		System.out.println("*******************************");
+		System.out.println("");
 		System.out.println("Iva do Produto: " + product.getIva()*100 + "%");
 		double iva = 0.0;
 		do {
-			System.out.println("Introduza o valor do IVA aplicado no preço do produto.");
+			System.out.println("Introduza o novo valor do IVA aplicado ao preço do produto. (prima enter para manter)");
 			String sIva = Reader.read();
 			if (!sIva.equals("")){
 				iva = Reader.toDouble(sIva, 0.0);
@@ -85,12 +87,12 @@ public class EditProductState implements State {
 		
 		Product product1 = new Product(name, price, iva);
 		product1.setID(id);
-		
-		System.out.println("Produto Alterado!");
-		ProductRepository.getInstance().editEntity(product1);
-		System.out.printf("ID: %d \nnome: %s \npreço: %.2f euros \nIVA: %d", product1.getID() , product1.getName(),(float)product1.getPvp(),(int)(product1.getIva()*100));
-		System.out.println("%");
-		System.out.println("Prima enter para continuar.");
+//		
+//		System.out.println("Produto Alterado!");
+//		ProductRepository.getInstance().editEntity(product1);
+//		System.out.printf("ID: %d \nnome: %s \npreço: %.2f euros \nIVA: %d", product1.getID() , product1.getName(),(float)product1.getPvp(),(int)(product1.getIva()*100));
+//		System.out.println("%");
+//		System.out.println("Prima enter para continuar.");
 	Reader.read();
 	}
 

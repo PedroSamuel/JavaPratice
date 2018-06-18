@@ -39,7 +39,7 @@ public abstract class EntityRepository <T extends Entity> {
 		
 	public T getEntity(long ID) {
 		T entity = repository.get(Long.valueOf(ID));
-		//System.out.println(entity);
+		System.out.println(entity);
 		return entity;
 	}	
 	

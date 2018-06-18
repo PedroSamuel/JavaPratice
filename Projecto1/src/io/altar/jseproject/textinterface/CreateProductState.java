@@ -19,15 +19,15 @@ public class CreateProductState implements State{
 		
 		double price = 0.0;
 		do {
-		System.out.println("");
-		System.out.println("Introduza o preço do produto a criar.");
-	    String sPrice = Reader.read();
-		
+			System.out.println("");
+			System.out.println("Introduza o preço do produto a criar.");
+		    String sPrice = Reader.read();
+			
 			price = Reader.toDouble(sPrice, 0.0);
-			if (price == 0.0){
-				System.out.println("XX " + sPrice + " - nao e um valor de preço valido. XX");
-				System.out.println("");
-			}
+				if (price == 0.0){
+					System.out.println("XX " + sPrice + " - nao e um valor de preço valido. XX");
+					System.out.println("");
+				}
 		}while (price == 0.0);
 		
 		double iva = 0.0;
@@ -49,10 +49,7 @@ public class CreateProductState implements State{
 		System.out.println("**************************");
 		System.out.println("");
 		ProductRepository.getInstance().createEntity(product1);
-		System.out.printf("ID: %d \nnome: %s \npreço: %.2f euros \nIVA: %d", product1.getID() , product1.getName(),(float)product1.getPvp(),(int)(product1.getIva()*100));
-		System.out.println("%");
-		System.out.println("Prima ENTER para continuar.");
-	Reader.read();
+
 	
 		return false;
 	}

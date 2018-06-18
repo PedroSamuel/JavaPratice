@@ -9,7 +9,7 @@ public class ShelfRepository extends EntityRepository<Shelf>{
 	
 	private static final ShelfRepository INSTANCE = new ShelfRepository();
 	
-	public static ShelfRepository GetInstance() {
+	public static ShelfRepository getInstance() {
 		return INSTANCE;
 	}
 
