@@ -10,9 +10,9 @@ public abstract class EntityRepository <T extends Entity> {
 	private HashMap<Long, T> repository = new HashMap<>(); //public ??
 	private long LargestID = 0;
 	
-	public Set<Long> getIndexesArray() {
-		Set<Long> indexArray = this.repository.keySet();
-		return indexArray;
+	public Set<Long> getIndexesSet() {
+		Set<Long> indexSet = this.repository.keySet();
+		return indexSet;
 	}
 	
 	public long getLargestID() {
@@ -38,6 +38,11 @@ public abstract class EntityRepository <T extends Entity> {
 	}
 		
 	public T getEntity(long ID) {
+		T entity = repository.get(Long.valueOf(ID));
+		return entity;
+	}	
+	
+	public T getEntityPrint(long ID) {
 		T entity = repository.get(Long.valueOf(ID));
 		System.out.println(entity);
 		return entity;

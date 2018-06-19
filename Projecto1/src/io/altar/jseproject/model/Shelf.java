@@ -18,6 +18,13 @@ public class Shelf extends Entity{
 			this.setRentPrice(price);
 	}
 	
+	public Shelf(double price) {
+		super();
+		this.capability = 0;
+		this.productOnShelf = null;
+		this.setRentPrice(price);
+}
+	
 	//______________________Getters e Setters _________________________ //
 	
 	public void setCapability(int capability) {
@@ -34,7 +41,7 @@ public class Shelf extends Entity{
 		this.productOnShelf = prod;
 	}
 		
-	public Product getProductOnShef() {
+	public Product getProductOnShelf() {
 		return this.productOnShelf;
 	}
 	
@@ -52,10 +59,13 @@ public class Shelf extends Entity{
 	
 	@Override
 	public String toString() {
-		return "Shelf [capability=" + capability + ", productOnShelf=" + productOnShelf + ", rentPrice=" + rentPrice
-				+ "]";
+		if (this.productOnShelf == null){
+			return ("ID: " + getID() + ") Preço Aluguer (Dia): " + getRentPrice() + "€, [ Prateleira Vazia ]");
+		}
+		else {
+			return ("ID: " + getID() + ") Preço Aluguer (Dia): " + getRentPrice() + "€, Produto na Prateleira: [ID:" + productOnShelf.getID() + ") " +  productOnShelf.getName() + ", Quantidade: " + capability);
+		}
 	}
 	
-
 }
 

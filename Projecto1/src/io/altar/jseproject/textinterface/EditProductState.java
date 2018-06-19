@@ -7,28 +7,32 @@ public class EditProductState implements State {
 
 	@Override
 	public boolean runState() {
-		System.out.println("#### EDITAR PRODUTO ####");
-		System.out.println("");
-		
-		
-		System.out.println("Introduza o ID do produto a editar.");
-		long id = Reader.readfromChoices((ProductRepository.getInstance().getIndexesArray()), 0);
-		if (id != 0) {
-			editProduct(id);
-		} else {
-			System.out.println("XX    ID não válido     XX");
-			System.out.println("_________________________________");
-			System.out.println("");
+		if ( ProductRepository.getInstance().getIndexesSet().size() == 0){
+			System.out.println("XX Opção não válida. XX");
+			return false;
 		}
 		
-		
+		System.out.println("#### EDITAR PRODUTO ####");
+		System.out.println("");
+
+		long id = 0;
+		String repeat = ("N");
+		  do {	
+			 System.out.println("Introduza o ID do produto a editar.");
+			 id = Seeker.SeekProductID();
+			 if (id != 0){		
+				 editProduct(id);
+			 }
+			 System.out.println("Deseja introduzir outro ID de Produto  (S/N)");
+			 repeat = Reader.read();
+
+		} while (repeat.toUpperCase().equals("S"));
 		return false;
 	}
 
 	private void editProduct(long id) {
 		Product product = ProductRepository.getInstance().getEntity(id);
 		System.out.println("*******************************");
-
 		System.out.println("");
 		System.out.println("Nome do produto: " + product.getName());
 		System.out.println("Introduza o novo nome do produto (prima ENTER para manter)");
@@ -87,13 +91,7 @@ public class EditProductState implements State {
 		
 		Product product1 = new Product(name, price, iva);
 		product1.setID(id);
-//		
-//		System.out.println("Produto Alterado!");
-//		ProductRepository.getInstance().editEntity(product1);
-//		System.out.printf("ID: %d \nnome: %s \npreço: %.2f euros \nIVA: %d", product1.getID() , product1.getName(),(float)product1.getPvp(),(int)(product1.getIva()*100));
-//		System.out.println("%");
-//		System.out.println("Prima enter para continuar.");
-	Reader.read();
+		ProductRepository.getInstance().editEntity(product1);
 	}
 
 }

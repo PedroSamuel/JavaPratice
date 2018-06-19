@@ -66,7 +66,7 @@ public class Product extends Entity{
 	@Override
 	public String toString() {
 		
-		return (getID() + " [Nome: " + getName() + ", pvp: " + pvp + "€, iva: " + (iva*100) + "% ]");
+		return ("ID: " + getID() + ") Nome: " + getName() + ", pvp: " + pvp + "€, iva: " + (iva*100) + "% ");
 	}
 
 	

@@ -1,6 +1,7 @@
 package io.altar.jseproject.textinterface;
 
 import io.altar.jseproject.repositories.ProductRepository;
+import io.altar.jseproject.repositories.ShelfRepository;
 
 public class DeleteEntityState implements State {
 	String item;
@@ -12,6 +13,16 @@ public class DeleteEntityState implements State {
 
 	@Override
 	public boolean runState() {
+		int size;
+		if (item.equals("Produto")){
+			size = (ProductRepository.getInstance().getIndexesSet().size());
+		}else {
+			size = (ShelfRepository.getInstance().getIndexesSet().size());
+		}
+		if (size == 0){
+			System.out.println("XX Opção não válida. XX");
+			return false;
+		}
 		
 		System.out.println("#### ELIMINAR " + item.toUpperCase() + "####");
 		System.out.println("");
