@@ -11,12 +11,7 @@ public class Shelf extends Entity{
 	
 		
 	//#################### CONSTRUCTOR ################################ //
-	public Shelf(int capability, Product productOnShelf, double price) {
-			super();
-			this.capability = capability;
-			this.productOnShelf = productOnShelf;
-			this.setRentPrice(price);
-	}
+
 	
 	public Shelf(double price) {
 		super();
@@ -39,6 +34,14 @@ public class Shelf extends Entity{
 		
 	public void setProductOnShelf(Product prod){
 		this.productOnShelf = prod;
+		//prod.setOnShelf(this);
+	}
+	
+	public void removeProductFromShelf(){
+		this.productOnShelf.removeFromShelf(this);
+		this.productOnShelf = null;
+		this.setCapability(0);
+		
 	}
 		
 	public Product getProductOnShelf() {
@@ -63,8 +66,21 @@ public class Shelf extends Entity{
 			return ("ID: " + getID() + ") Preço Aluguer (Dia): " + getRentPrice() + "€, [ Prateleira Vazia ]");
 		}
 		else {
-			return ("ID: " + getID() + ") Preço Aluguer (Dia): " + getRentPrice() + "€, Produto na Prateleira: [ID:" + productOnShelf.getID() + ") " +  productOnShelf.getName() + ", Quantidade: " + capability);
+			return ("ID: " + getID() + ") Preço Aluguer (Dia): " + getRentPrice() + "€, Produto na Prateleira: [ ID:" + productOnShelf.getID() + ") " +  productOnShelf.getName() + ", Quantidade: " + capability + "]");
 		}
+	}
+
+	@Override
+	public void getDetails() {
+		System.out.println("ID: " + getID());
+		System.out.println("Preço aluguer (diario); " + getRentPrice());
+		if (this.getProductOnShelf() != null){
+			System.out.println("Produto na prateleira: [" + getProductOnShelf() + "]");
+			System.out.println("Quantidade: " + getCapability());
+		} else {
+			System.out.println("Prateleira Vazia");
+		}
+		
 	}
 	
 }

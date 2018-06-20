@@ -1,4 +1,4 @@
-package io.altar.jseproject.textinterface;
+package io.altar.jseproject.utilities;
 import java.util.Scanner;
 import java.util.Set;
 public interface Reader {

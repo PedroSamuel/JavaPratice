@@ -1,8 +1,9 @@
 package io.altar.jseproject.textinterface;
 
-import io.altar.jseproject.model.Shelf;
-import io.altar.jseproject.repositories.ProductRepository;
+
 import io.altar.jseproject.repositories.ShelfRepository;
+import io.altar.jseproject.utilities.Reader;
+import io.altar.jseproject.utilities.Seeker;
 
 public class EditShelfState implements State {
 
@@ -34,14 +35,13 @@ public class EditShelfState implements State {
 	}
 
 	private void editShelf(long id) {
-		Shelf shelf = ShelfRepository.getInstance().getEntity(id);
 		System.out.println("*******************************");
 		System.out.println("");
 		
 		double price = 0.0;
 		do {
 			
-			System.out.println("Preço diario do aluguer da Prateleira: " + shelf.getRentPrice() + "€");
+			System.out.println("Preço diario do aluguer da Prateleira: " + shelfs.getEntity(id).getRentPrice() + "€");
 			System.out.println("Introduza o valor do novo preço (prima ENTER para manter)");
 			String sPrice = Reader.read();
 			if (!sPrice.equals("")) {
@@ -51,64 +51,67 @@ public class EditShelfState implements State {
 						System.out.println("Introduza um valor de preço valido.");
 					} else { 
 						System.out.println("Preço Editado!");
-						shelf.setRentPrice(price);
-						ShelfRepository.getInstance().editEntity(shelf);
+						shelfs.getEntity(id).setRentPrice(price);
 					}
 			} else {
 				System.out.println("Preço Mantido!");
-				price = shelf.getRentPrice();
+				price = shelfs.getEntity(id).getRentPrice();
 			}
 		} while (price == 0.0);
 		
-		if (ProductRepository.getInstance().getIndexesSet().size() > 0){
-			EditProductToShelf(shelf);
+		if (products.getIndexesSet() != null){
+			EditProductToShelf(id);
 		}
 	}
 	
 
-	private void EditProductToShelf(Shelf shelf) {
-		
+	private void EditProductToShelf(long id) {
 		boolean exit;
 		do{
 			exit = true;
-			if (shelf.getProductOnShelf() == null){
+			if (shelfs.getEntity(id).getProductOnShelf() == null){
 				
 				System.out.println("Prateleira Vazia.");
 				
 				System.out.println("Deseja introduzir um novo Produto? (S/N)");
 				if (Reader.read().toUpperCase().equals("S")){
-					shelf = CreateShelfState.setProductToShelf(shelf);
+					CreateShelfState.setProductToShelf(id);
 					exit = false;
 				}
 			} else {
-				System.out.println("Produto na Prateleira: " + shelf.getProductOnShelf() + ", Quantidade: " + shelf.getCapability());
-				System.out.println("Opçoes (prima qualquer outra tecla para continuar): ");
+				System.out.println("Produto na Prateleira: " + shelfs.getEntity(id).getProductOnShelf() + ", Quantidade: " + shelfs.getEntity(id).getCapability());
+				System.out.println("Opçoes : ");
 				System.out.println("1) Alterar Produto");
 				System.out.println("2) Alterar Quantidade");
 				System.out.println("3) Eliminar Produto");
+				System.out.println("?) (prima qualquer outra tecla para continuar)");
 				int[] choices = {1,2,3};
 				int choice = Reader.readfromChoices(choices, 0);
 				switch(choice){
 					case 1: 
-						shelf = CreateShelfState.setProductToShelf(shelf);
+						try{
+							shelfs.getEntity(id).getProductOnShelf().removeFromShelf(shelfs.getEntity(id));
+						} catch(NullPointerException e){
+							}
+						CreateShelfState.setProductToShelf(id);
 						exit = false;
 						break;
 					case 2: 
 						int capability = 0;
 						while(capability == 0){
-							System.out.println("Que quantidade deseja introduzir na prateleira?");
-							capability = Reader.readInt();
-							if (capability == 0){
+							System.out.println("Que quantidade deseja colocar na prateleira?");
+							capability = capability + Reader.readInt();
+							if (capability <= 0){
 								System.out.println("Quantidade Invalida.");
 							}
 						}	
-						shelf.setCapability(capability);
+						shelfs.getEntity(id).setCapability(capability);
 						exit = false;
 						break;
 					case 3:
+						
+						shelfs.getEntity(id).removeProductFromShelf();
 						System.out.println("Produto Eliminado");
-						shelf.setCapability(0);
-						shelf.setProductOnShelf(null);
 						exit = false;
 						break;
 						

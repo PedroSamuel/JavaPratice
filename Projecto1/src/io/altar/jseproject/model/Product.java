@@ -1,14 +1,16 @@
 package io.altar.jseproject.model;
-import java.util.ArrayList; // referencia arraylist http://www.javaprogressivo.net/2012/09/como-usar-arraylist-em-java.html
+import java.util.ArrayList;
 import java.util.List;
 
 
 
 public class Product extends Entity{
 	private String name;
-	private ArrayList<Shelf> onShelfs; //???????
+	private ArrayList<Shelf> onShelfs = new ArrayList<>(); 
 	private double iva;
 	private double pvp;
+	//private double discount;
+	//private double price;
 	
 	public static final List<Double> validIva = new ArrayList<>();
 	static {
@@ -35,10 +37,20 @@ public class Product extends Entity{
 		return name;
 	}
 
-	public void setOnShelfs(ArrayList<Shelf> onShelfs) {
-		this.onShelfs = onShelfs;
+	public void setOnShelf(Shelf shelf) {
+		this.onShelfs.add(shelf);
 	}	
 	
+	public void removeFromShelf(Shelf shelf){
+		//if (this.onShelfs.contains(shelf)){
+		try{
+			this.onShelfs.remove(shelf);
+	
+		} catch(NullPointerException e) {
+			System.out.println("O produto nåo se encontra na prateleira.");
+		}
+	}
+		
 	public ArrayList<Shelf> getOnShelfs() {
 		return onShelfs;
 	}
@@ -67,6 +79,27 @@ public class Product extends Entity{
 	public String toString() {
 		
 		return ("ID: " + getID() + ") Nome: " + getName() + ", pvp: " + pvp + "€, iva: " + (iva*100) + "% ");
+	}
+	
+	@Override
+	public void getDetails(){
+		System.out.println("ID do produto: " + getID());
+		System.out.println("Nome do produto: " + getName());
+		System.out.println("PVP: " + getPvp() + "€");
+		System.out.println("IVA): " + (getIva()*100) + "%");
+		// if (this.onShelfs.size() > 0){
+		try{
+			System.out.print("Producto nas Prateleiras: {");
+			for (Shelf shelf: this.onShelfs){
+				System.out.print("[ID: " + shelf.getID() + ", quantidade: " + shelf.getCapability() + "], ");
+
+			}
+		System.out.println("}");
+		} catch (NullPointerException e){
+			System.out.println("Este produto ainda no existe em nenhuma prateleira. ");
+		}
+		//System.out.println("Desconto Aplicado :");
+	
 	}
 
 	

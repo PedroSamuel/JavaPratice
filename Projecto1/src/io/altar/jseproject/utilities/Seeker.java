@@ -1,9 +1,11 @@
-package io.altar.jseproject.textinterface;
+package io.altar.jseproject.utilities;
 
 import io.altar.jseproject.repositories.ProductRepository;
 import io.altar.jseproject.repositories.ShelfRepository;
 
 public interface Seeker {
+	
+
 	
 	public static long SeekProductID() {
 		long id = Reader.readfromChoices((ProductRepository.getInstance().getIndexesSet()), 0);
@@ -30,6 +32,8 @@ public interface Seeker {
 		}
 	
 	}
+	
+	
 	
 
 }

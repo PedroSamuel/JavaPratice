@@ -2,6 +2,8 @@ package io.altar.jseproject.textinterface;
 
 import io.altar.jseproject.model.Product;
 import io.altar.jseproject.repositories.ProductRepository;
+import io.altar.jseproject.utilities.Reader;
+import io.altar.jseproject.utilities.Seeker;
 
 public class EditProductState implements State {
 
@@ -31,7 +33,7 @@ public class EditProductState implements State {
 	}
 
 	private void editProduct(long id) {
-		Product product = ProductRepository.getInstance().getEntity(id);
+		Product product = products.getEntity(id);
 		System.out.println("*******************************");
 		System.out.println("");
 		System.out.println("Nome do produto: " + product.getName());
@@ -42,6 +44,7 @@ public class EditProductState implements State {
 			System.out.println("Nome Editado!");
 		} else {
 			System.out.println("Nome Mantido!");
+			name = product.getName();
 		}
 		System.out.println("");
 		System.out.println("Preço do produto: " + product.getPvp() + "€.");

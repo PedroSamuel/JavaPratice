@@ -2,6 +2,8 @@ package io.altar.jseproject.textinterface;
 
 import io.altar.jseproject.repositories.ProductRepository;
 import io.altar.jseproject.repositories.ShelfRepository;
+import io.altar.jseproject.utilities.Reader;
+import io.altar.jseproject.utilities.Seeker;
 
 public class ConsultEntityState  implements State {
 	String item;
@@ -19,9 +21,10 @@ public class ConsultEntityState  implements State {
 	public boolean runState() {
 		int size;
 		if (item.equals("Produto")){
-			size = (ProductRepository.getInstance().getIndexesSet().size());
+
+			size = (products.repository().size());
 		}else {
-			size = (ShelfRepository.getInstance().getIndexesSet().size());
+			size = (shelfs.repository().size());
 		}
 		if (size == 0){
 			System.out.println("XX Opção não válida. XX");
@@ -36,8 +39,11 @@ public class ConsultEntityState  implements State {
 			case("Produto"):
 				System.out.println("Introduza o ID do Produto a consultar");
 				id = Seeker.SeekProductID();
+				
 				if (id != 0) {
-					ProductRepository.getInstance().getEntity(id);
+					ProductRepository.getInstance().getEntity(id).getDetails();
+					System.out.println("Prima qualquer tecla para continuar....");
+					Reader.read();
 				} else {
 					System.out.println("XX    ID não válido     XX");
 					System.out.println("_________________________________");
@@ -48,7 +54,9 @@ public class ConsultEntityState  implements State {
 				System.out.println("Introduza o ID da Prateleira a consultar");
 				id = Seeker.SeekShelfID();
 				if (id != 0) {
-					ShelfRepository.getInstance().getEntity(id);
+					ShelfRepository.getInstance().getEntity(id).getDetails();
+					System.out.println("Prima qualquer tecla para continuar....");
+					Reader.read();
 				} else {
 					System.out.println("XX    ID não válido     XX");
 					System.out.println("_________________________________");

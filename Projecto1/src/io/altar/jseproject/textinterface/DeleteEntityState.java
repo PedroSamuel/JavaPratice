@@ -1,7 +1,10 @@
 package io.altar.jseproject.textinterface;
 
+import io.altar.jseproject.model.Shelf;
 import io.altar.jseproject.repositories.ProductRepository;
 import io.altar.jseproject.repositories.ShelfRepository;
+import io.altar.jseproject.utilities.Reader;
+import io.altar.jseproject.utilities.Seeker;
 
 public class DeleteEntityState implements State {
 	String item;
@@ -43,7 +46,10 @@ public class DeleteEntityState implements State {
 							System.out.println("Tem a certeza que deseja eliminar este Produto? (S/N)");
 							String answer = Reader.read().toUpperCase();
 								if (answer.equals("S")){
-									ProductRepository.getInstance().removeEntity(id);
+									for (Shelf shelf: products.getEntity(id).getOnShelfs()){
+										shelf.removeProductFromShelf();
+									}
+									products.removeEntity(id);
 									System.out.println("Produto Removido com Sucesso!!");
 								} else {
 									System.out.println("Produto não removido.");
@@ -51,17 +57,23 @@ public class DeleteEntityState implements State {
 						}
 						break;
 					case("Prateleira"):
-						id = Seeker.SeekProductID();
+						id = Seeker.SeekShelfID();
 						if (id != (long)0) {
-							System.out.println("Tem a certeza que deseja eliminar este Produto? (S/N)");
+							System.out.println("Tem a certeza que deseja eliminar esta Prateleira? (S/N)");
 							String answer = Reader.read().toUpperCase();
 								if (answer.equals("S")){
-									ProductRepository.getInstance().removeEntity(id);
-									System.out.println("Produto Removido com Sucesso!!");
+									try{
+										shelfs.getEntity(id).getProductOnShelf().removeFromShelf(shelfs.getEntity(id));
+									} catch(NullPointerException e){
+										}
+									
+									shelfs.removeEntity(id);
+									
+									System.out.println("Prateleira Removida com Sucesso!!");
+									};
 								} else {
-									System.out.println("Produto não removido.");
+									System.out.println("Prateleira não removida.");
 								}
-						}
 						break;
 				}
 						

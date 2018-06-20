@@ -1,8 +1,9 @@
 package io.altar.jseproject.textinterface;
 
 import io.altar.jseproject.model.Shelf;
-import io.altar.jseproject.repositories.ProductRepository;
-import io.altar.jseproject.repositories.ShelfRepository;
+import io.altar.jseproject.utilities.Reader;
+import io.altar.jseproject.utilities.Seeker;
+
 
 
 public class CreateShelfState implements State{
@@ -28,18 +29,18 @@ public class CreateShelfState implements State{
 				
 		}while (price == 0.0);
 		Shelf shelf = new Shelf(price);
+		long shelfId = shelfs.createEntity(shelf);
 		
-		if (ProductRepository.getInstance().getIndexesSet().size() > 0){
+		if (products.getIndexesSet().size() > 0){
 			System.out.println("Deseja introduzir algum produto na prateleira (S/N)?");
 			String answer = Reader.read().toUpperCase();
 			if (answer.equals("S")) {
-				shelf = setProductToShelf(shelf);
+				setProductToShelf(shelfId);
 			} else {
 				System.out.println("Prateleira vazia.");
 			}
 		}
 		
-		ShelfRepository.getInstance().createEntity(shelf);
 		System.out.println("");
 		System.out.println("");
 		System.out.println("### PRATELEIRA CRIADA COM SUCESSO! ###");
@@ -50,23 +51,30 @@ public class CreateShelfState implements State{
 	}
 
 	
-	public static Shelf setProductToShelf(Shelf shelf){
+	public static long setProductToShelf(long shelfId){
 		int capability = 0;
 		long idProduct = 0;
 		
 		while (idProduct == 0) {
 			System.out.println("Introduza o ID do Produto a inserir:");
 			idProduct = Seeker.SeekProductID(); 
-			ProductRepository.getInstance().getEntityPrint(idProduct);
-		}
+
+		}	
+		
+		shelfs.getEntity(shelfId).setProductOnShelf(products.getEntityPrint(idProduct));
+		//products.getEntity(idProduct).setOnShelf(shelf);; Irrelevante?
 		while(capability == 0){
 			System.out.println("Que quantidade deseja introduzir na prateleira?");
 			capability = Reader.readInt();
 			if (capability == 0){
 				System.out.println("Quantidade Invalida.");
 			}
-		}			
-		return new Shelf(capability, ProductRepository.getInstance().getEntity(idProduct), shelf.getRentPrice());
+			
+		} 
+		shelfs.getEntity(shelfId).setCapability(capability);
+		products.getEntity(idProduct).setOnShelf(shelfs.getEntity(shelfId));
+		return idProduct;
+		
 
 	}
 }

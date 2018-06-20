@@ -2,6 +2,7 @@ package io.altar.jseproject.textinterface;
 
 import io.altar.jseproject.model.Product;
 import io.altar.jseproject.repositories.ProductRepository;
+import io.altar.jseproject.utilities.Reader;
 
 //import io.altar.jseproject.model.Product;
 

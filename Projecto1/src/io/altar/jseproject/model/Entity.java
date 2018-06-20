@@ -13,4 +13,6 @@ public abstract class Entity {
 	public void setID(long ID) {
 		this.ID = ID;
 	}
+	
+	public abstract void getDetails();
 }

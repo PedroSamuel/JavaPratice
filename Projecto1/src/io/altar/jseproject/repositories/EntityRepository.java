@@ -7,6 +7,8 @@ import io.altar.jseproject.model.Entity;
  
 public abstract class EntityRepository <T extends Entity> {	
 	
+	
+
 	private HashMap<Long, T> repository = new HashMap<>(); //public ??
 	private long LargestID = 0;
 	
@@ -59,6 +61,10 @@ public abstract class EntityRepository <T extends Entity> {
 	@Override
 	public String toString() {
 		return "EntityRepository [repository= " + repository + ", LargestID=" + LargestID + "]";
+	}
+	
+	public HashMap<Long, T> repository() {
+		return repository;
 	}
 	
 	
