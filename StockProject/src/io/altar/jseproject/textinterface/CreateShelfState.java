@@ -62,7 +62,6 @@ public class CreateShelfState implements State{
 		}	
 		
 		shelfs.getEntity(shelfId).setProductOnShelf(products.getEntityPrint(idProduct));
-		//products.getEntity(idProduct).setOnShelf(shelf);; Irrelevante?
 		while(capability == 0){
 			System.out.println("Que quantidade deseja introduzir na prateleira?");
 			capability = Reader.readInt();

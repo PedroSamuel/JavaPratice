@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="io.altar.jseproject.model.Product"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.util.Scanner"/>
@@ -8,7 +7,12 @@
 <fullyQualifiedTypeName name="java.util.LinkedHashMap"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="io.altar.jseproject.model.Entity"/>
-<fullyQualifiedTypeName name="io.altar.jseproject.model.Shelf"/>
-<fullyQualifiedTypeName name="io.altar.jseproject.repositories.ShelfRepository"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="io.altar.jseproject.repositories.ProductRepository"/>
+<fullyQualifiedTypeName name="io.altar.jseproject.model.Product"/>
+<fullyQualifiedTypeName name="io.altar.jseproject.textinterface.Reader"/>
+<fullyQualifiedTypeName name="io.altar.jseproject.repositories.ShelfRepository"/>
+<fullyQualifiedTypeName name="io.altar.jseproject.model.Shelf"/>
+<fullyQualifiedTypeName name="io.altar.jseproject.utilities.Seeker"/>
+<fullyQualifiedTypeName name="io.altar.jseproject.utilities.Reader"/>
 </qualifiedTypeNameHistroy>

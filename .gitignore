@@ -1,1 +1,5 @@
-.metadata
+<<<<<<< HEAD
+/.metadata
+=======
+*.metadata/
+>>>>>>> df146f9fa66345453d9c858e7de10d197de165b1
